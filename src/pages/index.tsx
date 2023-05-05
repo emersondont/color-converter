@@ -4,6 +4,9 @@ import { useRouter } from "next/router";
 import { ParsedUrlQuery } from 'querystring';
 import styles from '@/styles/Home.module.css';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import { ColorTranslator } from 'colortranslator';
 
 interface Params extends ParsedUrlQuery {
@@ -25,7 +28,20 @@ export default function Home() {
 					type: 'HEX'
 				} as Params
 			});
-
+		}
+		else {
+			if (color)
+				toast.info('Not acceptable', {
+					position: "top-center",
+					autoClose: 1000,
+					hideProgressBar: true,
+					closeOnClick: true,
+					pauseOnHover: true,
+					draggable: true,
+					progress: 0,
+					theme: "light",
+					style: { color: '#3C424D' }
+				});
 		}
 	}
 
@@ -81,6 +97,19 @@ export default function Home() {
 			>
 				<X size={24} weight="bold" />
 			</button>
+
+			<ToastContainer
+				position="top-center"
+				autoClose={1000}
+				hideProgressBar
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss
+				draggable
+				pauseOnHover
+				theme="light"
+			/>
 
 		</main>
 	)

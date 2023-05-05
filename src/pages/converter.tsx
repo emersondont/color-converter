@@ -4,6 +4,10 @@ import { ParsedUrlQuery } from 'querystring';
 import { Plus } from "@phosphor-icons/react";
 import styles from '@/styles/Converter.module.css';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 import { ColorTranslator } from 'colortranslator';
 
 interface Params extends ParsedUrlQuery {
@@ -18,6 +22,8 @@ export default function Converter() {
 
 	const colorTranslator = new ColorTranslator(color)
 
+
+
 	function handleNewColor() {
 		router.push({
 			pathname: '/'
@@ -26,9 +32,18 @@ export default function Converter() {
 
 	async function copyTextToClipboard(text: string) {
 		if ('clipboard' in navigator) {
+			toast.info('Copied', {
+				position: "top-center",
+				autoClose: 1000,
+				hideProgressBar: true,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: 0,
+				theme: "light",
+				style: { color: '#3C424D' }
+			});
 			return await navigator.clipboard.writeText(text);
-		} else {
-			return document.execCommand('copy', true, text);
 		}
 	}
 
@@ -50,15 +65,6 @@ export default function Converter() {
 			valor: colorTranslator.RGBA
 		},
 		{
-			titulo: 'RGB',
-			valor: `(${(colorTranslator.R/255).toFixed(4)}, ${(colorTranslator.G/255).toFixed(4)}, ${(colorTranslator.B/255).toFixed(4)})`
-		},
-		
-		{
-			titulo: 'RGBA',
-			valor: `(${(colorTranslator.R/255).toFixed(4)}, ${(colorTranslator.G/255).toFixed(4)}, ${(colorTranslator.B/255).toFixed(4)}, ${colorTranslator.A})`
-		},
-		{
 			titulo: 'CMYK',
 			valor: colorTranslator.CMYK
 		},
@@ -73,6 +79,15 @@ export default function Converter() {
 		{
 			titulo: 'HSLA',
 			valor: colorTranslator.HSLA
+		},
+		{
+			titulo: 'RGB',
+			valor: `(${(colorTranslator.R / 255).toFixed(4)}, ${(colorTranslator.G / 255).toFixed(4)}, ${(colorTranslator.B / 255).toFixed(4)})`
+		},
+
+		{
+			titulo: 'RGBA',
+			valor: `(${(colorTranslator.R / 255).toFixed(4)}, ${(colorTranslator.G / 255).toFixed(4)}, ${(colorTranslator.B / 255).toFixed(4)}, ${colorTranslator.A})`
 		}
 	];
 
@@ -93,15 +108,18 @@ export default function Converter() {
 
 			<div className={styles.grid}>
 				{colors.map((cor, index) => (
-					<div 
+					<div
 						key={index}
 						onClick={e => copyTextToClipboard(cor.valor)}
 						title='Click to copy'
 					>
 						<h1
 							style={{
-								backgroundColor: colorTranslator.HEX,
-								color: '#fff'
+								backgroundColor: colorTranslator.HEXA,
+								color: (colorTranslator.R + colorTranslator.G + colorTranslator.B) / 3 > 112.5 ?
+									'#3c424d'
+									:
+									'#fff'
 							}}
 						>
 							{cor.titulo}
@@ -110,7 +128,18 @@ export default function Converter() {
 					</div>
 				))}
 			</div>
-
+			<ToastContainer
+				position="top-center"
+				autoClose={1000}
+				hideProgressBar
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss
+				draggable
+				pauseOnHover
+				theme="light"
+			/>
 		</main>
 	)
 }
