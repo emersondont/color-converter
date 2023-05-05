@@ -6,14 +6,15 @@
   --font-mono: ui-monospace, Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono',
     'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
     'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
-  
-  
+
+
 
 
   --foreground-rgb: 0, 0, 0;
   --background-rgb: 255, 255, 255;
 
 }
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -29,9 +30,28 @@ body {
 body {
   /*color: rgb(var(--foreground-rgb));*/
   background: #ffffff;
-  font-family: 'Rubik', sans-serif;;
+  font-family: 'Rubik', sans-serif;
+  ;
 }
 
 a {
   text-decoration: none;
+}
+
+@media screen and (min-width: 320px) {
+  html {
+    font-size: 8px;
+  }
+}
+
+@media screen and (min-width: 480px) {
+  html {
+    font-size: 8px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  html {
+    font-size: 12px;
+  }
 }

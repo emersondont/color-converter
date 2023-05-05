@@ -13,6 +13,7 @@
     "@types/node": "18.16.3",
     "@types/react": "18.2.1",
     "@types/react-dom": "18.2.3",
+    "colortranslator": "^1.10.2",
     "next": "13.3.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",

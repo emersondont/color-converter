@@ -25,6 +25,13 @@
 	border: none;
 	border-radius: 20px;
 	padding: 16px;
+
+	cursor: pointer;
+	transform: scale(1);
+  	transition: transform 0.2s ease-in-out;
+}
+.closeButton:hover {
+	transform: scale(.95);
 }
 
 .textCenter {
@@ -40,7 +47,7 @@
 	font-size: 2rem;
 }
 
-.textCenter h2 {
+.textCenter p {
 	color: #777D86;
 	font-weight: 500;
 	font-size: 1.5rem;
@@ -85,16 +92,30 @@
 	color: #fff;
 	font-weight: 600;
 	font-size: 1.5rem;
-	background-color: #777b82;
 	border: none;
 
 	padding: 16px 24px;
 	border-radius: 16px;
 
-	cursor: not-allowed;
-
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	gap: 8px;
+}
+
+.buttonInputColorAllow {
+	cursor: pointer;
+	background-color: #3c424d;
+
+	transform: scale(1);
+  	transition: transform 0.2s ease-in-out;
+}
+
+.buttonInputColorAllow:hover {
+	transform: scale(.95);
+}
+
+.buttonInputColorDeny {
+	cursor: not-allowed;
+	background-color: #777b82;
 }
