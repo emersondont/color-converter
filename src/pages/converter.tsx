@@ -90,7 +90,7 @@ export default function Converter() {
 			valor: `(${(colorTranslator.R / 255).toFixed(4)}, ${(colorTranslator.G / 255).toFixed(4)}, ${(colorTranslator.B / 255).toFixed(4)}, ${colorTranslator.A})`
 		}
 	];
-
+	
 	return (
 		<main className={styles.main}>
 			<header>
@@ -116,7 +116,11 @@ export default function Converter() {
 						<h1
 							style={{
 								backgroundColor: colorTranslator.HEXA,
-								color: (colorTranslator.R + colorTranslator.G + colorTranslator.B) / 3 > 112.5 ?
+								color: (
+									colorTranslator.R
+									+ colorTranslator.G
+									+ colorTranslator.B
+									) / 3 > 150.0 || colorTranslator.A <= 0.5 ?
 									'#3c424d'
 									:
 									'#fff'

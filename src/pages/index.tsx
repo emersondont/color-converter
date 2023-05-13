@@ -1,4 +1,4 @@
-import { useState, FormEvent } from 'react';
+import { useState, FormEvent, useRef, useEffect } from 'react';
 import { X, ArrowRight } from "@phosphor-icons/react";
 import { useRouter } from "next/router";
 import { ParsedUrlQuery } from 'querystring';
@@ -17,6 +17,10 @@ interface Params extends ParsedUrlQuery {
 export default function Home() {
 	const [color, setColor] = useState<string>('')
 	const router = useRouter();
+	const inputRef = useRef<HTMLInputElement>(null);
+	useEffect(() => {
+		inputRef.current?.focus();
+	}, []);
 
 	async function handleSubmit(event: FormEvent<HTMLFormElement>) {
 		event.preventDefault();
@@ -73,6 +77,7 @@ export default function Home() {
 					<input
 						type="text"
 						placeholder='#FFFFFF'
+						ref={inputRef}
 						value={color}
 						onChange={e => setColor(e.target.value)}
 					/>
