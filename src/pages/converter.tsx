@@ -90,7 +90,7 @@ export default function Converter() {
 			valor: `(${(colorTranslator.R / 255).toFixed(4)}, ${(colorTranslator.G / 255).toFixed(4)}, ${(colorTranslator.B / 255).toFixed(4)}, ${colorTranslator.A})`
 		}
 	];
-	
+
 	return (
 		<main className={styles.main}>
 			<header>
@@ -112,6 +112,9 @@ export default function Converter() {
 						key={index}
 						onClick={e => copyTextToClipboard(cor.valor)}
 						title='Click to copy'
+						style={{
+							borderColor: colorTranslator.HEXA
+						}}
 					>
 						<h1
 							style={{
