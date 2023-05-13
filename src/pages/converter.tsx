@@ -113,7 +113,11 @@ export default function Converter() {
 						onClick={e => copyTextToClipboard(cor.valor)}
 						title='Click to copy'
 						style={{
-							borderColor: colorTranslator.HEXA
+							
+							borderColor: colorTranslator.HEX == '#FFFFFF' || colorTranslator.A == 0 ?
+							'#777D86'
+							:
+							colorTranslator.HEXA
 						}}
 					>
 						<h1
