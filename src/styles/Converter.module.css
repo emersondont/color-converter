@@ -73,6 +73,11 @@
     border-radius: 10px;
     cursor: pointer;
     width: 520px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.grid div:hover {
+    transform: scale(1.05);
 }
 
 .grid div h1 {
